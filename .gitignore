@@ -1,3 +1,7 @@
 images/client/WHOIS*
 .DS_Store
 Thumbs.db
+dist/
+node_modules/
+.dev.vars*
+.wrangler/

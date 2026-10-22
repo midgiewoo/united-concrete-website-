@@ -13,7 +13,7 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo"><img src="images/client/Logo.jpeg" alt="United Concrete Coring &amp; Sawing"></a>
+      <a href="index.html" class="logo" aria-label="United Concrete Home"><img src="images/client/Logo.jpeg" alt="United Concrete Coring &amp; Sawing" width="2700" height="1050"></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <nav class="main-nav" aria-label="Main navigation">
         <ul>
@@ -40,7 +40,10 @@
   <section>
     <div class="container">
       <div class="about-grid">
-        <img src="images/scraped/about_us_1.jpg" alt="United Concrete team and equipment">
+        <picture>
+          <source srcset="images/samantha/web/service-truck-on-jobsite.webp" type="image/webp">
+          <img src="images/samantha/web/service-truck-on-jobsite.jpg" alt="United service truck on a street job with crew members and an excavator nearby" width="1000" height="472" loading="lazy">
+        </picture>
         <div class="about-content">
           <h2>Our Story</h2>
           <p><strong>United Concrete Coring &amp; Sawing</strong> was started in 1993 with a single truck. From the very first client, the company built a solid reputation for <span class="highlight">professionalism, reliability, and on-time service</span>.</p>
@@ -48,14 +51,17 @@
         </div>
       </div>
 
-      <div class="about-grid mt-2" style="margin-top:3rem;">
+      <div class="about-grid about-split">
         <div class="about-content">
           <h2>Today</h2>
           <p>United Concrete is now owned and operated by <strong>Gabriel and Samantha Perches</strong>, who carry forward the same commitment to quality, safety, and customer service that has defined the company for over three decades.</p>
           <p>United's trucks and equipment are <strong>state of the art</strong> and maintained with a very strict program. This ensures reliable equipment on every job, guaranteeing timely and productive work schedules. All trucks are fully self-contained with water and power, allowing us to complete your project no matter where the location.</p>
           <p>From the moment we arrive on your job, our <strong>"Can Do"</strong> attitude speaks for itself. With over 30 years of experience in the concrete cutting industry, our goal is to make your project come in on time and under budget — from the <em>smallest residential job to the largest industrial project</em>.</p>
         </div>
-        <img src="images/scraped/about_us_2.jpg" alt="United Concrete field work">
+        <picture>
+          <source srcset="images/samantha/web/flat-saw-mountain-backdrop.webp" type="image/webp">
+          <img src="images/samantha/web/flat-saw-mountain-backdrop.jpg" alt="Operator flat-sawing a curb with mountains behind the job site" width="1000" height="1147" loading="lazy">
+        </picture>
       </div>
     </div>
   </section>
@@ -63,10 +69,22 @@
   <section class="bg-light">
     <div class="container">
       <div class="gallery-grid">
-        <img src="images/client/IMG_6609.jpeg" alt="United crew core drilling on site">
-        <img src="images/client/IMG_6617.jpeg" alt="United crew operating equipment">
-        <img src="images/client/IMG_6627.jpeg" alt="United Concrete service truck">
-        <img src="images/client/IMG_6681.jpeg" alt="United crew flat sawing">
+        <picture>
+          <source srcset="images/samantha/web/operator-adjusting-core-drill.webp" type="image/webp">
+          <img class="crop-upper" src="images/samantha/web/operator-adjusting-core-drill.jpg" alt="Operator kneeling to adjust a core drill" width="1000" height="1184" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="images/samantha/web/operator-pushing-flat-saw.webp" type="image/webp">
+          <img class="crop-upper" src="images/samantha/web/operator-pushing-flat-saw.jpg" alt="Operator pushing a walk-behind flat saw through pavement" width="1000" height="1498" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="images/samantha/web/flat-saw-beside-cone.webp" type="image/webp">
+          <img class="crop-upper" src="images/samantha/web/flat-saw-beside-cone.jpg" alt="Operator flat-sawing wet pavement beside a traffic cone" width="1000" height="1044" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="images/samantha/web/flat-saw-raising-dust.webp" type="image/webp">
+          <img class="crop-upper" src="images/samantha/web/flat-saw-raising-dust.jpg" alt="Operator running a flat saw as dust rises from the blade" width="1000" height="1089" loading="lazy">
+        </picture>
       </div>
     </div>
   </section>
@@ -84,14 +102,15 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand"><img src="images/client/Logo.jpeg" alt="United Concrete"><p>100% American Owned &amp; Operated. Serving Southern California since 1993.</p></div>
-        <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#core-drilling">Core Drilling</a></li><li><a href="services.html#flat-sawing">Flat Sawing</a></li><li><a href="services.html#asphalt-cutting">Asphalt Cutting</a></li><li><a href="services.html#electric-sawing">Electric Slab Sawing</a></li></ul></div>
-        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="equipment.html">Equipment</a></li><li><a href="projects.html">Projects</a></li><li><a href="testimonials.html">Testimonials</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:9517891934">(951) 789-1934</a></li><li><a href="mailto:contact@unitedconcreteinc.com">contact@unitedconcreteinc.com</a></li><li>19069 Van Buren Blvd, STE 114-361, Riverside, CA 92508</li></ul></div>
+        <div class="footer-brand"><img src="images/client/Logo.jpeg" alt="United Concrete" width="2700" height="1050" loading="lazy"><p>100% American Owned &amp; Operated. Serving Southern California since 1993.</p></div>
+        <div class="footer-col"><p class="footer-heading">Services</p><ul><li><a href="services.html#core-drilling">Core Drilling</a></li><li><a href="services.html#flat-sawing">Flat Sawing</a></li><li><a href="services.html#asphalt-cutting">Asphalt Cutting</a></li><li><a href="services.html#electric-sawing">Electric Slab Sawing</a></li><li><a href="services.html#sewer-taps">Sewer &amp; Man-Hole Taps</a></li></ul></div>
+        <div class="footer-col"><p class="footer-heading">Company</p><ul><li><a href="about.html">About Us</a></li><li><a href="equipment.html">Equipment</a></li><li><a href="projects.html">Projects</a></li><li><a href="testimonials.html">Testimonials</a></li></ul></div>
+        <div class="footer-col"><p class="footer-heading">Contact</p><ul><li><a href="tel:9517891934">(951) 789-1934</a></li><li><a href="tel:18667292888">1-866-SAWCUTT</a></li><li><a href="mailto:contact@unitedconcreteinc.com">contact@unitedconcreteinc.com</a></li><li>19069 Van Buren Blvd, STE 114-361, Riverside, CA 92508</li></ul></div>
       </div>
       <div class="footer-bottom"><span>&copy; 2026 United Concrete Coring &amp; Sawing. CA License #748846.</span></div>
     </div>
   </footer>
+  <a class="mobile-call" href="tel:9517891934">Call (951) 789-1934</a>
   <script src="js/main.js"></script>
 </body>
 </html>

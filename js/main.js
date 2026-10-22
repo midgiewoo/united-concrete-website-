@@ -10,45 +10,87 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => nav.classList.remove("open"));
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
     });
   }
 
-  const form = document.querySelector("#contact-form");
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const status = document.querySelector("#form-status");
-      const submitBtn = form.querySelector('button[type="submit"]');
+  const gallery = document.querySelector("#letter-gallery");
+  const lightbox = document.querySelector("#letter-lightbox");
+  if (gallery && lightbox) {
+    const opens = [...gallery.querySelectorAll(".letter-open")];
+    const shot = lightbox.querySelector(".lightbox-img");
+    const closeBtn = lightbox.querySelector(".lightbox-close");
+    const prevBtn = lightbox.querySelector(".lightbox-prev");
+    const nextBtn = lightbox.querySelector(".lightbox-next");
+    let index = 0;
+    let lastFocus = null;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
-      if (status) status.textContent = "";
+    const show = (next) => {
+      index = (next + opens.length) % opens.length;
+      const source = opens[index].querySelector("img");
+      shot.src = source.currentSrc || source.src;
+      shot.alt = source.alt;
+    };
 
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
-        });
+    const open = (start) => {
+      lastFocus = document.activeElement;
+      show(start);
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      closeBtn.focus({ preventScroll: true });
+    };
 
-        if (response.ok) {
-          form.reset();
-          if (status) {
-            status.textContent = "Thank you! Your message has been sent. We'll get back to you shortly.";
-            status.className = "form-status success";
-          }
-        } else {
-          throw new Error("Form submission failed");
+    const close = () => {
+      lightbox.hidden = true;
+      shot.removeAttribute("src");
+      document.body.style.overflow = "";
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus({ preventScroll: true });
+    };
+
+    opens.forEach((button, i) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        open(i);
+      });
+    });
+    closeBtn.addEventListener("click", close);
+    prevBtn.addEventListener("click", () => show(index - 1));
+    nextBtn.addEventListener("click", () => show(index + 1));
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+      } else if (event.key === "ArrowRight") {
+        show(index + 1);
+      } else if (event.key === "ArrowLeft") {
+        show(index - 1);
+      } else if (event.key === "Tab") {
+        const items = [prevBtn, nextBtn, closeBtn];
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
         }
-      } catch {
-        if (status) {
-          status.textContent = "Something went wrong. Please call us at (951) 789-1934.";
-          status.className = "form-status error";
-        }
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
       }
     });
   }

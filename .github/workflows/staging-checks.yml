@@ -1,0 +1,33 @@
+name: United Concrete staging checks
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Source syntax
+        run: npm run check
+      - name: Fail-closed form tests
+        run: npm test
+      - name: Static Pages build
+        run: npm run build
+      - name: Exclude development files from public static bundle
+        run: |
+          test -f dist/index.html
+          test -f dist/contact.html
+          test -f dist/js/contact-form.js
+          test ! -e dist/docs
+          test ! -e dist/scripts
+          test ! -e dist/tests
+          test ! -e dist/functions
+          test ! -e dist/package.json
