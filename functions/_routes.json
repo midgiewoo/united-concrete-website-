@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "include": ["/splash.asp", "/default.asp", "/default.asp*", "/default.asp.*"],
+  "exclude": []
+}
